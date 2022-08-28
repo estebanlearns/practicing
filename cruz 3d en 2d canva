@@ -1,0 +1,115 @@
+var d = document.getElementById("practica");
+// la funcion de getelementbyid sólo está disponible como parte
+// del método "document", por eso debe incluirse y aisgnarse a
+// una variable
+var lienzo = d.getContext("2d");
+/* al colocar el . (punto) seguido de la variable "d" (que es nuestro canvas)
+estamos invocando la función "getContext" que retorna un espacio de
+renderizado en 2d, dónde podremos dibujar.
+ahora "lienzo" corresponde a mi espacio de dibujo, o al método
+que representa la función getcontext del canvas o "d"
+*/
+console.log(lienzo);
+function dibujarlinea(color, xi, yi, xf, yf)
+/*
+ "dibujarlinea" es el nombre de la función y todo entre ()
+ corresponde a las variables de dicha función que luego
+ deben ser definidas entre {llaves}
+ dentro de las llaves está lo que hará la función
+ una vez sea invocada por su nombre.
+*/
+{
+  lienzo.beginPath();
+  // comienza una nueva ruta
+  lienzo.strokeStyle = color;
+  // especifica el color de la linea
+  lienzo.moveTo(xi, yi);
+  // indica dónde comienza la ruta
+  lienzo.lineTo(xf, yf);
+  // indica hacía dónde se dirige
+  lienzo.stroke();
+  // ejecuta la acción de trazar la linea
+  lienzo.closePath();
+  // termina la ruta
+  /*
+  so, "lienzo.closepath()" invoca la función de terminar ruta
+  del objeto "lienzo"
+  */
+  lienzo.beginPath();
+}
+dibujarlinea(color="black", 1, 1, 800, 0);
+dibujarlinea(color="black", 1, 1, 0, 800);
+dibujarlinea(color="black", 1, 800, 800, 800);
+dibujarlinea(color="black", 800, 800, 800, 0); //termina marco de trabajo
+
+  dibujarlinea(color="green", 400, 400, 100, 400);
+  //linea centro izquierda
+  dibujarlinea(color="green", 400, 400, 700, 400);
+  // linea centro-derecha
+  dibujarlinea(color="green", 400, 400, 400, 700);
+  //linea centro-abajo
+  dibujarlinea(color="green", 400, 400, 400, 100); //Termina cruz verde
+  // linea centro arriba
+
+for(let i =0; i < 60; i++) // 60 es el número máximo de iteraciones
+// o el número de lineas que quiero que dibuje mi función, por eso
+// está en función de este valor.
+// cada cuadrante tiene 300 pixels de largo, y se dibuja una linea
+//cada 5 pixels.
+{
+  dibujarlinea(color="red", 400, y_i, x_f, 400); // CII
+  dibujarlinea(color="red", x_i, 400, 400, y_f); // CIII
+  dibujarlinea(color="green", 400, y_i, x_i2, 400); //CI
+  dibujarlinea(color="green", x_i3, 400, 400, y_f); //CIV
+
+  var y_i = 100 + 5*i;
+  var x_f = 405 + 5*i;
+  var x_i = 100 + 5*i;
+  var x_i2 = 395 - 5*i;
+  var x_i3 = 700 - 5*i;
+  var y_f = 405 + 5*i;
+
+  // si se utiliza "Let" no se puede declarar la variable, error.
+}
+
+
+
+
+
+var e = 2;
+for (var i = 0; i < 10; i++) //Se puede intercambiar var=let // i++ es igual que i= i+1
+{
+  console.log(i)
+}
+// Ejemplo del bucle While
+var n = 21;
+while (n > 20)
+{
+  var x = n/2;
+  n = n + 1;
+  console.log("prueba de n " + x)
+  if (n === 40){break;}
+  // lo anterior dice: para todos los enteros mayores que 20
+  // divídase entre 2 e imprimase este número en la consola.
+  // la condición if de estricta igualdad rompe el ciclo cuando
+  // n === 40, de lo contrario sería un ciclo infinito.
+}
+for (let y = 0; y < 30; y++){
+  var t = (y*2)/3;
+  console.log("prueba de for " + t);
+  /*
+  Lo anterior dice: para todos los enteros menores que 30
+  múltipliquense x 2 y luego divídase entre 3 e imprima este
+  resultado en la consola, concatenado con "prueba de for"
+  */
+}
+//Ejemplo de Do While Loop.
+let u = 5;
+// Se define la variable a iterar antes de comenzar el bucle
+do {
+  u = u + 1;
+  // Esta sentencia se ejecuta al menos una vez antes de
+  // evaluar la condición, como es false pues 5 no es menor que 5
+  // se evalúa 1 vez, imprime el #6 y el bucle termina.
+  console.log("prueba de u " + u);
+} while (u < 5);
